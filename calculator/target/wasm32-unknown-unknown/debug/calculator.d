@@ -1,0 +1,1 @@
+/Users/mikkel/code/devrel/components/calculator/target/wasm32-unknown-unknown/debug/calculator.wasm: /Users/mikkel/code/devrel/components/calculator/src/lib.rs /Users/mikkel/code/devrel/components/calculator/wit/calculator.wit

@@ -1,0 +1,6 @@
+package mikkelhegn:operators
+
+world calculator {
+    import add: func(a: u32, b: u32) -> u32
+    export calc: func() -> u32
+}

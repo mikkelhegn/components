@@ -1,5 +1,0 @@
-package local:calculator
-
-world calculator {
-    export add: func(a: u32, b: u32) -> u32
-}

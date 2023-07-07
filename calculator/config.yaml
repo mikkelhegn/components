@@ -1,0 +1,7 @@
+search-paths:
+  - ../calc
+
+instantiations:
+  $input:
+    arguments:
+     local:calculator/calculator: add
