@@ -34,5 +34,6 @@ We cannot dynamically run the component using Wasmtime CLI (not yet supported), 
 
 We cannot dynamically run the component using Wasmtime CLI (not yet supported), so have to build a program to host it.
 
-1. Use Wasmtime to instantiate the component, and import the WIT file for the `calculator` component.
-2. `cargo run`
+1. First built a new component from the two existing components, using https://wasmbuilder.app/, remember to export the exports of the `calculator` component as exports for the new component.
+2. Use Wasmtime to instantiate the component, and import the WIT file for the `calculator` component.
+3. `cargo run`
