@@ -1,13 +1,26 @@
-# A WebAssemblt Component Demo
+# A WebAssembly Component Demo
 
-The goal is to show how to compose applications using various components.
+The goal is to show how to create components, and use them to compose applications.
 
-Components express the functionality they offer through exports.
-Components express the functionality they require through imports.
+## A few words about components, their imports and exports, and the guest and host terminology
 
-It's not until you start composing applications, using components, that they become either guests or hosts. This is mainly a terminology that can be used to explain the relationship between two components in the dependency graph, not a component in isolation. Only exception being the Wasm runtime, which always is a host for the first component(s) in the dendency graph.
+Something which has been very confusing to me to get right, is the terminoogy being used to describe imports and exports, and a component being a guest and/or a host. My clarification on this I've summarized below.
 
-## Build a component to add two numbers
+Components express the functionality they offer through exports. Components express the functionality they require through imports. This is tied to the WIT files, which components use.
+
+It's not until you start composing applications, i.e., linking multiple compoments together, that a component can be describd as either a guest or host. This terminology is used to explain the relationship between two components in the dependency graph, not a component in isolation. E.g., Component A (which exports something), is being imported by component B. In that relationship, A is the guest, while B is the host.
+
+Only exception being the Wasm runtime, which always is a host for the first component(s) in the dendency graph.
+
+## The examples
+
+In order to use a component, we need a Wasm rutime. As of the writing of this, the only way to use a components functionality, is to embed Wasmtime into a native program, import the component, and call it's exported functions. It's also not possible to link two or more components at runtime, they have to be "compiled" into a single wasm file. This is all pending updates to tooling and runtime, to make this more dynamic.
+
+As the first example, I've wanted to build a component (add), which provide a function to add two numbers, then use this from a program (wasmtime-add) taking two arguments and returning the result.
+
+As another example, to compose mulitple component together, I added an intermediate component (calculator), which is capabale of adding two numbers, by using the first component (add). Composing these two to a single component, which is hosted by a program (wasmtime-calculator).
+
+## Building a component to add two numbers
 
 1. Define the [WIT](./add/wit/add.wit) definition for the component.
 2. Implement the function, using `wit-bindgen` to generate the bindings for the WIT World.
